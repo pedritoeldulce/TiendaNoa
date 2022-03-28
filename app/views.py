@@ -1,5 +1,5 @@
 # arquitectura MVC
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect, url_for
 
 page = Blueprint('page', __name__)
 
@@ -14,6 +14,16 @@ def page_not_found(error):
     return render_template('errors/404.html'), 404
 
 
-@page.route('/login')
+@page.route('/login', methods=['POST', 'GET'])
 def login():
+
+    if request.method == 'POST':
+        print(request.form['usuario'])
+        print(request.form['password'])
+
+        if request.form['usuario'] == 'admin' and request.form['password'] == '12345':
+            return redirect(url_for('page.index'))
+        else:
+            return render_template('auth/login.html')
+
     return render_template('auth/login.html')

@@ -8,16 +8,17 @@
 
 {% block body%}
 
-<form class="form-signin text-center">
+<form class="form-signin text-center" action="/login" method="POST">
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
     <img class="mb-4" src="{{url_for('static', filename='images/login.png')}}" alt="" width="122" height="122">
-    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-    <label for="inputEmail">Correo Electrónico</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesi&oacute;n</h1>
+    <label for="usuario">Usuario</label>
+    <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" minlength="4" maxlength="30" required autofocus>
+    <br>
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" class="form-control" placeholder="Password" minlength="5" required>
 
-    <label for="inputPassword" class="mt-2">Constraseña</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesi&oacute;n </button>
     <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
 </form>
 
