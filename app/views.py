@@ -27,3 +27,16 @@ def login():
             return render_template('auth/login.html')
 
     return render_template('auth/login.html')
+
+
+@page.route('/list-users')
+def list_users():
+
+    from .models import User
+
+    try:
+        users = User.users_list()
+    except Exception as ex:
+        print(ex)
+
+    return render_template("list_user.html", users=users)

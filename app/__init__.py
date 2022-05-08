@@ -12,7 +12,7 @@ def create_app(config):
     # Singleton
     app = Flask(__name__)
     app.config.from_object(config)
-    from app.models import User, Perfil, Product,Buy
+    from app.models import User, Perfil, Product, Category
 
     app.register_blueprint(page)  # pasamos las rutas al servidor
     csrf.init_app(app)

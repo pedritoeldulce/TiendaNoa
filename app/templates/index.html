@@ -2,12 +2,22 @@
 
 {% block title %} Index {% endblock %}
 
+{% block CustomCSS %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/carousel.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/categories.css')}}">
+{% endblock %}
+
 {% block container %}
-<div class="container py-3" >
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-            <h1>Hola NOa canao</h1>
-        </div>
-    </div>
-</div>
+
+
+<!-- Corregir el carousel (imagenes)-->
+{% include './components/carousel.html' %}
+{% include './components/categories.html'%}
+
+
+
+{% endblock %}
+
+{% block CustomJS %}
+    <script src="{{url_for('static', filename='js/carousel.js')}}"></script>
 {% endblock %}
